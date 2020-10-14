@@ -1,28 +1,16 @@
 <a name="Title">
 
-# vCheck Daily Report for vSphere
-[![stars badge]][stars]
-[![forks badge]][forks]
-[![issues badge]][issues]
+# vCheck Fork for WSUS Reporting
 
-[stars badge]:https://img.shields.io/github/stars/alanrenouf/vCheck-vSphere.svg
-[forks badge]:https://img.shields.io/github/forks/alanrenouf/vCheck-vSphere.svg
-[issues badge]:https://img.shields.io/github/issues/alanrenouf/vCheck-vSphere.svg
+Testing this out, don't expect things to work yet ! But think of vCheck, but reporting on WSUS server/groups and updates.
 
-[stars]:https://github.com/alanrenouf/vCheck-vSphere/stargazers
-[forks]:https://github.com/alanrenouf/vCheck-vSphere/network
-[issues]:https://github.com/alanrenouf/vCheck-vSphere/issues
-
-[Join the VMware Code and #vCheck channel on slack and ask questions here!](https://code.vmware.com/slack/)
-
-![Alt text](http://www.virtu-al.net/wp-content/uploads/2017/10/vCheck_Clarity.jpg "vCheck Sample")
+Forked from vCheck on 18th Sept 2020.
 
 |Navigation|
 |-----------------|
 |[About](#About)|
 |[Features](#Features)|
 |[Installing](#Installing)|
-|[Enhancements](#Enhancements)|
 |[Contributing](#Contributing)|
 |[Plugins](#Plugins)|
 |[Styles](#Styles)|
@@ -50,57 +38,7 @@ This script is not to be confused with an Audit script, although the reporting f
 
 The following items are included as part of the vCheck vSphere download, they are included as vCheck Plugins and can be removed or altered very easily by editing the specific plugin file which contains the data. vCheck Plugins are found under the Plugins folder.
 
-- General Details
-- Number of Hosts
-- Number of VMs
-- Number of Templates
-- Number of Clusters
-- Number of Datastores
-- Number of Active VMs
-- Number of Inactive VMs
-- Number of DRS Migrations for the last days
-- Snapshots over x Days old
-- Datastores with less than x% free space
-- VMs created over the last x days
-- VMs removed over the last x days
-- VMs with No Tools
-- VMs with CD-Roms connected
-- VMs with Floppy Drives Connected
-- VMs with CPU ready over x%
-- VMs with over x amount of vCPUs
-- List of DRS Migrations
-- Hosts in Maintenance Mode
-- Hosts in disconnected state
-- NTP Server check for a given NTP Name
-- NTP Service check
-- vmkernel warning messages ov the last x days
-- VC Error Events over the last x days
-- VC Windows Event Log Errors for the last x days with VMware in the details
-- VC VMware Service details
-- VMs stored on datastores attached to only one host
-- VM active alerts
-- Cluster Active Alerts
-- If HA Cluster is set to use host datastore for swapfile, check the host has a swapfile location set
-- Host active Alerts
-- Dead SCSI Luns
-- VMs with over x amount of vCPUs
-- vSphere check: Slot Sizes
-- vSphere check: Outdated VM Hardware (Less than V7)
-- VMs in Inconsistent folders (the name of the folder is not the same as the name)
-- VMs with high CPU usage
-- Guest disk size check
-- Host over committing memory check
-- VM Swap and Ballooning
-- ESXi hosts without Lockdown enabled
-- ESXi hosts with unsupported mode enabled
-- General Capacity information based on CPU/MEM usage of the VMs
-- vSwitch free ports
-- Disk over commit check
-- Host configuration issues
-- VCB Garbage (left snapshots)
-- HA VM restarts and resets
-- Inaccessible VMs
-- Much, Much more.......
+No features yet.
 
 <a name="Installing">
   
@@ -109,19 +47,6 @@ The following items are included as part of the vCheck vSphere download, they ar
 
 Copy  the vCheck files to the desired location. Run the script 'vCheck.ps1' -Config to do initial configuration of the script. 
 <!--Copy the vCheck files to the desired location. Run the script `vCheckUtils.ps1` and call the function `Schedule-vCheck`. Answer the prompts to configure the scheduled job.-->
-
-<a name="Enhancements">
-
-# Enhancements
-[*Back to top*](#Title)
-
-* **Unit Testing / CI** - We are working on full support for [Pester](https://github.com/pester/Pester/blob/master/README.md) tests, which will help automate code validation. We will start small and work to provide as much documentation as we can to help with integration.
-
-* **Module Support** - We are looking at our options to convert some, or all of the plugins to PowerShell modules. This will make things much easier to version and track, individually. Additionally, if we convert vCheck, itself, to a module, we open our options to support publishing to the [PowerShell Gallery](https://www.powershellgallery.com/), or at least providing users and organizations a standard platform to distribute it. Again, these options are currently under review.
-
-* **Settings GUI** - A settings GUI would be a basic form that would allow a user to view/set/change current vCheck configuration settings, without the complexity of settings values from within a file. This initiative is currently in development.
-
-In the meantime, don't hesitate to pop over to the [#vCheck channel on slack](https://code.vmware.com/slack/) and join in on active conversations about anything you see- or don't see- here!
 
 <a name="Contributing">
 

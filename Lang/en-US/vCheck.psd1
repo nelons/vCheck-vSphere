@@ -32,5 +32,6 @@ ConvertFrom-StringData @'
     emailSend   = ..Sending Email
     emailAtch   = vCheck attached to this email
     HTMLdisp    = ..Displaying HTML results
+    footer      = Footer
 '@
 

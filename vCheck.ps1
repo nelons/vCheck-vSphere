@@ -737,6 +737,9 @@ function Get-ConfigScripts {
 ################################################################################
 #                                Initialization                                #
 ################################################################################
+# TEMP: This should be in a language file I think
+$ReportFooterAttrib = "<a href='http://virtu-al.net'>Alan Renouf</a>, WSUS version by <a href='https://enlow.co.uk'>Neale Lonslow</a>";
+
 # if we have the job parameter set, get the paths from the config file.
 if ($job) {
 	[xml]$jobConfig = Get-Content $job

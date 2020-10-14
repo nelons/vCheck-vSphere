@@ -1,6 +1,6 @@
 # Start of Settings 
 # Show table of centents in report?
-$ShowTOC = $true
+$ShowTOC = $reportShowTOC;
 # Number of columns in table of contents
 $ToCColumns = 1
 # End of Settings
@@ -21,15 +21,21 @@ Add-ReportResource "Header-VMware" ($StylePath + "\Header-vmware.png") -Used $tr
 # Hash table of key/value replacements
 if ($GUIConfig) {
     $StyleReplace = @{"_HEADER_" = ("'$reportHeader'");
+                      "_HEADERIMAGE_" = "Get-HeaderImage";
                       "_SCRIPT_" = "Get-ConfigScripts";
                       "_CONTENT_" = "Get-ReportContentHTML";
                       "_CONFIGEXPORT_" = ("'<div style=""text-align:center;""><button type=""button"" onclick=""createCSV()"">Export Settings</button></div>'")
-                      "_TOC_" = ("''")}
+                      "_TOC_" = ("''");
+                      "_FOOTER_" = "Get-Footer";
+                    }
 } else {
     $StyleReplace = @{"_HEADER_" = ("'$reportHeader'");
+                      "_HEADERIMAGE_" = "Get-HeaderImage";
                       "_CONTENT_" = "Get-ReportContentHTML";
                       "_CONFIGEXPORT_" = ("''")
-                      "_TOC_" = "Get-ReportTOC"}
+                      "_TOC_" = "Get-ReportTOC"
+                      "_FOOTER_" = "Get-Footer";
+                    }
 }
 
 #region Function Definitions
@@ -99,6 +105,36 @@ function Get-ReportTOC {
 
       return $TOCHTML
    }
+}
+
+function Get-HeaderImage {
+    if ($reportShowHeaderImage -eq $true) {
+        $html = @"
+    <table width='100%' style='background-color: #002438; border-collapse: collapse; border: 0px; margin: 0; padding: 0;'>
+        <tr>
+            <td>
+                <img src='cid:Header-vCheck' alt='vCheck' />
+            </td>
+            <td style='width: 171px'>
+                <img src='cid:Header-VMware' alt='VMware' />
+            </td>
+        </tr>
+    </table>
+"@
+    } else {
+        $html = "";
+
+    }
+
+    return $html;
+}
+
+function Get-Footer {
+    $html = "vCheck v$($vCheckVersion) by ";
+    $html += $ReportFooterAttrib;
+    $html += ". Generated on $($ENV:Computername) on $($Date.ToLongDateString()) at $($Date.ToLongTimeString())";
+
+    return $html;
 }
 #endregion
 
@@ -11674,16 +11710,7 @@ $ReportHTML = @"
       </header>
       <div class="content-container">
       <div class="content-area">
-      <table width='100%' style='background-color: #002438; border-collapse: collapse; border: 0px; margin: 0; padding: 0;'>
-      <tr>
-         <td>
-            <img src='cid:Header-vCheck' alt='vCheck' />
-         </td>
-         <td style='width: 171px'>
-            <img src='cid:Header-VMware' alt='VMware' />
-         </td>
-      </tr>
-   </table>
+      _HEADERIMAGE_
    _CONTENT_
       _CONFIGEXPORT_
       </div>
@@ -11692,7 +11719,7 @@ $ReportHTML = @"
    <!-- CustomHTMLClose -->
    <div>&nbsp;</div>
    <footer>
-      <p>vCheck v$($vCheckVersion) by <a href='http://virtu-al.net'>Alan Renouf</a> generated on $($ENV:Computername) on $($Date.ToLongDateString()) at $($Date.ToLongTimeString())</p>
+     _FOOTER_
    </footer>
    </div>
    </body>
