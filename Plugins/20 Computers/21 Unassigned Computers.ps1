@@ -2,7 +2,7 @@ $Title = "Unassigned Computers"
 $Author = "Neale Lonslow"
 $PluginVersion = 1.0
 $Header = "Unassigned Computers"
-$Comments = ""
+$Comments = "Computers that do not belong to a WSUS Group."
 $Display = "Table"
 $PluginCategory = "WSUS"
 

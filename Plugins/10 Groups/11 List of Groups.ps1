@@ -2,7 +2,7 @@ $Title = "List of WSUS Groups"
 $Author = "Neale Lonslow"
 $PluginVersion = 1.0
 $Header = "Groups"
-$Comments = ""
+$Comments = "The groups of computers configured in WSUS."
 $Display = "Table"
 $PluginCategory = "WSUS"
 

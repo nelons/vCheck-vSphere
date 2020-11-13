@@ -2,7 +2,7 @@ $Title = "Computers with Failed Updates"
 $Author = "Neale Lonslow"
 $PluginVersion = 1.0
 $Header = "Computers with Failed Updates"
-$Comments = ""
+$Comments = "Computers and updates that failed to install. Where possible, the error code has been retrieved."
 $Display = "Table"
 $PluginCategory = "WSUS"
 
